@@ -1,0 +1,27 @@
+<section id="features" class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="section-heading">
+          <h2>See What Markets are Trending</h2>
+          <p class="text-muted">Check out what you can do with this app theme!</p>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <div class="trend-titles">
+      <div class="col-sm-3">
+        <% if @stock.last_trade_price_only > @stock.two_hundredday_moving_average %>
+         <%= "The S&P is currently in a long-term up-trend" %>
+          <img src="/assets/stock_up.png" class="img-responsive" alt="">
+          <% else %>
+          <%= "The S&P is currently in a long-term down-trend" %>
+           <img src="/assets/stock_down.png" class="img-responsive" alt="">
+          <% end %>
+
+          <tradeit widget="buy-sell" stock-symbol="GE" publisher-user-id="123123" company-name="General Electric Co" />
+
+        </div>
+      </div>
+    </div>
+</section>
