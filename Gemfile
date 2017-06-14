@@ -36,6 +36,7 @@ end
 group :production do 
 	gem 'pg'
 	gem 'frontend-generators'
+  gem 'rails_12factor'
 
 end
 

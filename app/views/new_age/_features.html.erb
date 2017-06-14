@@ -10,17 +10,46 @@
       </div>
     </div>
     <div class="trend-titles">
-      <div class="col-sm-3">
-        <% if @stock.last_trade_price_only > @stock.two_hundredday_moving_average %>
-         <%= "The S&P is currently in a long-term up-trend" %>
-          <img src="/assets/stock_up.png" class="img-responsive" alt="">
-          <% else %>
-          <%= "The S&P is currently in a long-term down-trend" %>
-           <img src="/assets/stock_down.png" class="img-responsive" alt="">
-          <% end %>
-
-          <tradeit widget="buy-sell" stock-symbol="GE" publisher-user-id="123123" company-name="General Electric Co" />
-
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <% if @s_p.last_trade_price_only > @s_p.two_hundredday_moving_average %>
+             <%= "The S&P is currently in a long-term up-trend" %>
+              <img src="/assets/stock_up.png" class="img-responsive" alt="">
+              <% else %>
+              <%= "The S&P is currently in a long-term down-trend" %>
+               <img src="/assets/stock_down.png" class="img-responsive" alt="">
+              <% end %>
+              </div>
+          <div class="col-sm-3">
+            <% if @commodities.last_trade_price_only > @commodities.two_hundredday_moving_average %>
+             <%= "Commodities are currently in a long-term up-trend" %>
+              <img src="/assets/stock_up.png" class="img-responsive" alt="">
+              <% else %>
+              <%= "Commodities currently in a long-term down-trend" %>
+               <img src="/assets/stock_down.png" class="img-responsive" alt="">
+              <% end %>
+              </div>
+              <div class="col-sm-3">
+            <% if @developed.last_trade_price_only > @developed.two_hundredday_moving_average %>
+             <%= "Foreign Developed Markets are currently in a long-term up-trend" %>
+              <img src="/assets/stock_up.png" class="img-responsive" alt="">
+              <% else %>
+              <%= "Developed Markets currently in a long-term down-trend" %>
+               <img src="/assets/stock_down.png" class="img-responsive" alt="">
+              <% end %>
+              </div>
+              <div class="col-sm-3">
+            <% if @emerging.last_trade_price_only > @emerging.two_hundredday_moving_average %>
+             <%= "Emerging Markets are currently in a long-term up-trend" %>
+              <img src="/assets/stock_up.png" class="img-responsive" alt="">
+              <% else %>
+              <%= "Emerging Markets currently in a long-term down-trend" %>
+               <img src="/assets/stock_down.png" class="img-responsive" alt="">
+              <% end %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
