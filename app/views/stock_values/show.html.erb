@@ -1,0 +1,99 @@
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="value-ratios">
+	<div class="container">
+		<div class="col-md-12">
+			<div class="ticker_page">
+				
+			  <!-- <strong>Ticker:</strong> -->
+			  <% @ticker_value = @stock_value.ticker %>
+			  <% @ticker_value.upcase %>
+			  <% @val = StockQuote::Stock.quote(@ticker_value) %>
+			  <div id="stock-name">
+			  	<%= @val.name %>
+			  </div>
+			  <div id="stock-price">
+			   Stock Price: <%= @val.last_trade_price_only %>
+			   </div>
+			   <div id="market-cap">
+			  	Market Cap: <%= @val.market_capitalization %>
+			  	</div>
+			  	<div id="pe-ratio">
+			  	PE Ratio: <%= @val.pe_ratio %>
+		  	<script src="https://code.highcharts.com/highcharts.js"></script>
+			<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+			<script src="https://code.highcharts.com/modules/exporting.js"></script>
+				<div id="container" style="height: 400px"></div>
+					<script type="text/javascript">
+						Highcharts.chart('container', {
+						    chart: {
+						        type: 'column',
+						        options3d: {
+						            enabled: true,
+						            alpha: 15,
+						            beta: 15,
+						            viewDistance: 25,
+						            depth: 40
+						        }
+						    },
+
+						    title: {
+						        text: 'PE Ratio vs S&P'
+						    },
+
+						    xAxis: {
+						        categories: ['<%= @val.name %>', 'S%P Average']
+						    },
+
+						    yAxis: {
+						        allowDecimals: false,
+						        min: 0,
+						        title: {
+						            text: 'PE Ratio'
+						        }
+						    },
+
+						    tooltip: {
+						        headerFormat: '<b>{point.key}</b><br>',
+						        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+						    },
+
+						    plotOptions: {
+						        column: {
+						            stacking: 'normal',
+						            depth: 40
+						        }
+						    },
+
+						    series: [{
+						        name: 'Current PE',
+						        data: [<%= @val.pe_ratio %>, 15.66],
+						        stack: 'male'
+						    },]
+						});
+
+					</script>
+			  	</div>
+			  	<div id="pb-ratio">
+			  	PB Ratio: <%= @val.price_book %>
+			  	</div>
+			  	<div id="div-yield">
+			  	Dividend Yield: <%= @val.dividend_yield %>
+			  	</div>
+			  	<div id="ps-ratio">
+			  	P/S Ratio: <%= @val.price_sales %>
+			  	</div>
+			  	<div id="ebitda">
+			  	EBITDA: <%= @val.ebitda %>
+			  	</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<%= link_to 'Edit', edit_stock_value_path(@stock_value) %> |
+	<%= link_to 'Back', stock_values_path %>
+
+</div>

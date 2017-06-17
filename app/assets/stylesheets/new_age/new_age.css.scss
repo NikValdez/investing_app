@@ -345,11 +345,12 @@ section.cta {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('/assets/new_age/bg-cta.jpg');
-  padding: 250px 0;
+  background-image: url('/assets/wall_street.jpg');
+  padding: 150px 0;
 }
 section.cta .cta-content {
   position: relative;
+  top: -100px;
   z-index: 1;
 }
 section.cta .cta-content h2 {

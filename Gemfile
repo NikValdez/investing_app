@@ -20,6 +20,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'font-awesome-sass'
 gem 'devise'
 gem 'stock_quote'
+gem 'simple_form'
+gem "highcharts-rails"
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -35,7 +37,6 @@ end
 
 group :production do 
 	gem 'pg'
-	gem 'frontend-generators'
   gem 'rails_12factor'
 
 end

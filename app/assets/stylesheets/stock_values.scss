@@ -1,0 +1,49 @@
+@import 'https://code.highcharts.com/css/highcharts.css';
+
+
+.ticker_page {
+	font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+	font-weight: 200;
+	font-size: 30px;
+	line-height: 1.5;
+	text-align: center;
+}
+
+#stock-name {
+	font-size: 45px;
+}
+
+#stock-price {
+	font-size: 15px;
+}
+
+#market-cap {
+	float: left;
+}
+
+#pe-ratio {
+	float: right;
+}
+
+#pb-ratio {
+	text-align: center;
+}
+
+#div-yield {
+	float: left;
+}
+
+#ps-ratio {
+	text-align: center;
+}
+
+#ebitda {
+	float: right;
+}
+
+#container {
+    height: 400px; 
+    min-width: 310px; 
+    max-width: 800px;
+    margin: 0 auto;
+}
