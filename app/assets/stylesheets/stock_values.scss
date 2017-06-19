@@ -3,47 +3,62 @@
 
 .ticker_page {
 	font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
-	font-weight: 200;
+	font-weight: 100;
 	font-size: 30px;
 	line-height: 1.5;
-	text-align: center;
+
 }
 
-#stock-name {
-	font-size: 45px;
+
+
+#container, #bar-chart-pb, #bar-chart-ps, #bar-chart-div {
+    height: 400px; 
+    min-width: 310px; 
+    max-width: 310px;
+    margin: 0 auto;
+    border: 2px solid #7cb5ec;
+    border-radius: 5px;
 }
 
-#stock-price {
-	font-size: 15px;
-}
-
-#market-cap {
-	float: left;
-}
 
 #pe-ratio {
-	float: right;
+	float: left;
+	padding-top: 30px;
+	padding-right: 10rem;
 }
 
 #pb-ratio {
+	float: right;
+	padding-top: 30px;
+}
+#stock-name {
 	text-align: center;
+	border: 2px solid #7cb5ec;
+    border-radius: 5px;
+
+}
+#stock-price {
+	text-align: center;
+	font-size: 15px;
+	font-weight: 100px;
+	padding-top: 10px;
+	color: #7cb5ec;
+}
+
+#ps-ratio {
+	padding-top: 30px;
+	
+}
+
+.full-line {
+	max-width: 100%;
+
 }
 
 #div-yield {
 	float: left;
+	margin-top: 15px;
+	padding-top: 15px;
 }
 
-#ps-ratio {
-	text-align: center;
-}
 
-#ebitda {
-	float: right;
-}
-
-#container {
-    height: 400px; 
-    min-width: 310px; 
-    max-width: 800px;
-    margin: 0 auto;
-}

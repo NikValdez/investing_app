@@ -1,10 +1,12 @@
 <!-- <p id="notice"><%= notice %></p> -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
 <div class="value-ratios">
 	<div class="container">
-		<div class="col-md-12">
 			<div class="ticker_page">
-				
-			  <!-- <strong>Ticker:</strong> -->
 			  <% @ticker_value = @stock_value.ticker %>
 			  <% @ticker_value.upcase %>
 			  <% @val = StockQuote::Stock.quote(@ticker_value) %>
@@ -14,16 +16,11 @@
 			  <div id="stock-price">
 			   Stock Price: <%= @val.last_trade_price_only %>
 			   </div>
-			   <div id="market-cap">
-			  	Market Cap: <%= @val.market_capitalization %>
-			  	</div>
+			   
 			  	<div id="pe-ratio">
-			  	PE Ratio: <%= @val.pe_ratio %>
-		  	<script src="https://code.highcharts.com/highcharts.js"></script>
-			<script src="https://code.highcharts.com/highcharts-3d.js"></script>
-			<script src="https://code.highcharts.com/modules/exporting.js"></script>
-				<div id="container" style="height: 400px"></div>
-					<script type="text/javascript">
+			  	<!-- PE Ratio: <% @val.pe_ratio %> -->
+				<div id="container" style="height: 400px">
+					<script>
 						Highcharts.chart('container', {
 						    chart: {
 						        type: 'column',
@@ -41,7 +38,7 @@
 						    },
 
 						    xAxis: {
-						        categories: ['<%= @val.name %>', 'S%P Average']
+						        categories: ['<%= @val.name %>', 'S&P Average']
 						    },
 
 						    yAxis: {
@@ -59,7 +56,6 @@
 
 						    plotOptions: {
 						        column: {
-						            stacking: 'normal',
 						            depth: 40
 						        }
 						    },
@@ -72,18 +68,189 @@
 						});
 
 					</script>
+					</div>
 			  	</div>
 			  	<div id="pb-ratio">
-			  	PB Ratio: <%= @val.price_book %>
+			  	<!-- PB Ratio: <% @val.price_book %> -->
+			  	<div id="bar-chart-pb" style="height: 400px"></div>
+					<script>
+						Highcharts.chart('bar-chart-pb', {
+						    chart: {
+						        type: 'column',
+						        options3d: {
+						            enabled: true,
+						            alpha: 15,
+						            beta: 15,
+						            viewDistance: 25,
+						            depth: 40
+						        }
+						    },
+
+						    title: {
+						        text: 'PB Ratio vs S&P'
+						    },
+
+						    xAxis: {
+						        categories: ['<%= @val.name %>', 'S&P Average']
+						    },
+
+						    yAxis: {
+						        allowDecimals: false,
+						        min: 0,
+						        title: {
+						            text: 'PB Ratio'
+						        }
+						    },
+
+						    tooltip: {
+						        headerFormat: '<b>{point.key}</b><br>',
+						        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+						    },
+
+						    plotOptions: {
+						        column: {
+						            depth: 40
+						        }
+						    },
+
+						    series: [{
+						        name: 'Current PB',
+						        data: [<%= @val.price_book %>, 2.75],
+						        stack: 'male'
+						    },]
+						});
+
+					</script>
+					</div>
+					
 			  	</div>
-			  	<div id="div-yield">
-			  	Dividend Yield: <%= @val.dividend_yield %>
-			  	</div>
+			  	
 			  	<div id="ps-ratio">
-			  	P/S Ratio: <%= @val.price_sales %>
+			  	 <% @val.price_sales %>
+			  	<div id="bar-chart-ps" style="height: 400px"></div>
+					<script>
+						Highcharts.chart('bar-chart-ps', {
+						    chart: {
+						        type: 'column',
+						        options3d: {
+						            enabled: true,
+						            alpha: 15,
+						            beta: 15,
+						            viewDistance: 25,
+						            depth: 40
+						        }
+						    },
+
+						    title: {
+						        text: 'P/S Ratio vs S&P'
+						    },
+
+						    xAxis: {
+						        categories: ['<%= @val.name %>', 'S&P Average']
+						    },
+
+						    yAxis: {
+						        allowDecimals: false,
+						        min: 0,
+						        title: {
+						            text: 'P/S Ratio'
+						        }
+						    },
+
+						    tooltip: {
+						        headerFormat: '<b>{point.key}</b><br>',
+						        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+						    },
+
+						    plotOptions: {
+						        column: {
+						            depth: 40
+						        }
+						    },
+
+						    series: [{
+						        name: 'Current P/S',
+						        data: [<%= @val.price_sales  %>, 1.45],
+						        stack: 'male'
+						    },]
+						});
+
+					</script>
+					</div>
+			  	</div>
+
+			  	<hr class="full-line">
+			 <div class="container">
+			  	<div id="div-yield">
+			  	 
+			  	<div id="bar-chart-div" style="min-width: 310px; max-width: 310px; height: 400px; margin: 0 auto"></div>
+			  	<script>
+			  	Highcharts.chart('bar-chart-div', {
+				    chart: {
+				        type: 'bar'
+				    },
+				    title: {
+				        text: 'Dividend vs S&P'
+				    },
+				  
+				    xAxis: {
+				        categories: ['<%=@val.name %>', 'S&P'],
+				        title: {
+				            text: null
+				        }
+				    },
+				    yAxis: {
+				        min: 0,
+				        title: {
+				            text: 'Dividend',
+				            align: 'high'
+				        },
+				        labels: {
+				            overflow: 'justify'
+				        }
+				    },
+				   
+				    plotOptions: {
+				        bar: {
+				            dataLabels: {
+				                enabled: true
+				            }
+				        }
+				    },
+				    legend: {
+				        layout: 'vertical',
+				        align: 'right',
+				        verticalAlign: 'top',
+				        x: -40,
+				        y: 80,
+				        floating: true,
+				        borderWidth: 1,
+				        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+				        shadow: true
+				    },
+				    credits: {
+				        enabled: false
+				    },
+				    series: [{
+				       	name: 'Yield',
+				        data: [<%= @val.dividend_yield %>, 1.91]
+				    
+				    }]
+				});
+				</script>
+				</div>
+
+			  	</div>
+			  	<div id="market-cap">
+			  	Market Cap: <%= @val.market_capitalization %>
 			  	</div>
 			  	<div id="ebitda">
 			  	EBITDA: <%= @val.ebitda %>
+			  	
+			
+			  		
+					</div>
+
 			  	</div>
 				
 			</div>
