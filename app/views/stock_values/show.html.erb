@@ -183,7 +183,7 @@
 			 <div class="container">
 			  	<div id="div-yield">
 			  	 
-			  	<div id="bar-chart-div" style="min-width: 310px; max-width: 310px; height: 400px; margin: 0 auto"></div>
+			  	<div id="bar-chart-div" style="min-width: 400px; max-width: 500px; height: 400px; margin: 0 auto"></div>
 			  	<script>
 			  	Highcharts.chart('bar-chart-div', {
 				    chart: {
@@ -240,16 +240,84 @@
 				</script>
 				</div>
 
-			  	</div>
-			  	<div id="market-cap">
-			  	Market Cap: <%= @val.market_capitalization %>
-			  	</div>
-			  	<div id="ebitda">
-			  	EBITDA: <%= @val.ebitda %>
+
+			  	<div id="peg-ratio">
+			  	<div id="bar-chart-peg" style="min-width: 400px; max-width: 500px; height: 400px; margin: 0 auto"></div>
+			  	<script>
+			  	Highcharts.chart('bar-chart-peg', {
+				    chart: {
+				        type: 'bar'
+				    },
+				    title: {
+				        text: 'PEG vs S&P'
+				    },
+				  
+				    xAxis: {
+				        categories: ['<%=@val.peg_ratio %>', 'S&P'],
+				        title: {
+				            text: null
+				        }
+				    },
+				    yAxis: {
+				        min: 0,
+				        title: {
+				            text: 'PEG',
+				            align: 'high'
+				        },
+				        labels: {
+				            overflow: 'justify'
+				        }
+				    },
+				   
+				    plotOptions: {
+				        bar: {
+				            dataLabels: {
+				                enabled: true
+				            }
+				        }
+				    },
+				    legend: {
+				        layout: 'vertical',
+				        align: 'right',
+				        verticalAlign: 'top',
+				        x: -40,
+				        y: 80,
+				        floating: true,
+				        borderWidth: 1,
+				        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+				        shadow: true
+				    },
+				    credits: {
+				        enabled: false
+				    },
+				    series: [{
+				       	name: 'PEG',
+				        data: [<%= @val.peg_ratio %>, 1.4]
+				    
+				    }]
+				});
+				</script>
+				</div>
+			  </div>
+			  <div class="container">
+			  <div id="ebitda">
+			  
+				</div>
+			  <hr class="full-line">
+
+			  <div class="market">
+			  <div class="yearly_change"><%=@val.percent_change_from_year_low %><p class="sub-text">from the years low</p></div>
+			 <%= @val.market_capitalization %><br>
+			 <p class="sub-text">Market Cap</p>
+				<%= @val.ebitda %>
+				<p class="sub-text">EBITDA </p>
+				
+				</div>
+				</div>
+
+
+
 			  	
-			
-			  		
-					</div>
 
 			  	</div>
 				

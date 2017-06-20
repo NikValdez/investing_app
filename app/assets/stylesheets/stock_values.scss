@@ -11,10 +11,10 @@
 
 
 
-#container, #bar-chart-pb, #bar-chart-ps, #bar-chart-div {
+#container, #bar-chart-pb, #bar-chart-ps, #bar-chart-div, #bar-chart-peg {
     height: 400px; 
-    min-width: 310px; 
-    max-width: 310px;
+    min-width: 200px; 
+    max-width: 300px;
     margin: 0 auto;
     border: 2px solid #7cb5ec;
     border-radius: 5px;
@@ -47,18 +47,51 @@
 
 #ps-ratio {
 	padding-top: 30px;
+
 	
 }
 
 .full-line {
 	max-width: 100%;
+	color: #7cb5ec;
+
 
 }
 
 #div-yield {
 	float: left;
-	margin-top: 15px;
 	padding-top: 15px;
 }
 
+#peg-ratio {
+	float: right;
+	padding-top: 15px;
+}
+
+
+.market {
+	
+	font-size: 55px;
+	margin-top: 20px;
+	text-align: center;
+	border: 2px solid #7cb5ec;
+    border-radius: 5px;
+    font-family: "League Gothic","Times New Roman",serif;
+
+   
+}
+
+
+.sub-text {
+	font-size: 20px;
+	color: #7cb5ec;
+}
+
+
+
+.yearly_change {
+	
+	font-family: "League Gothic","Times New Roman",serif;
+
+}
 
