@@ -1,7 +1,9 @@
 <!-- <p id="notice"><%= notice %></p> -->
+<%= render "navigation_stock_value" %>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-3d.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 
 
 <div class="value-ratios">
@@ -179,8 +181,9 @@
 					</div>
 			  	</div>
 
-			  	<hr class="full-line">
+			  	
 			 <div class="container">
+			 <hr class="full-line">
 			  	<div id="div-yield">
 			  	 
 			  	<div id="bar-chart-div" style="min-width: 400px; max-width: 500px; height: 400px; margin: 0 auto"></div>
@@ -300,35 +303,72 @@
 				</div>
 			  </div>
 			  <div class="container">
-			  <div id="ebitda">
+			  <!-- <div id="ebitda">
 			  
-				</div>
+				</div> -->
 			  <hr class="full-line">
 
-			  <div class="market">
+			  
 			  <div class="yearly_change"><%=@val.percent_change_from_year_low %><p class="sub-text">from the years low</p></div>
+			  <div class="yearly_change"><%=@val.percent_change_from_year_high %><p class="sub-text">off the years high</p></div>
+			 <div class="market">
 			 <%= @val.market_capitalization %><br>
 			 <p class="sub-text">Market Cap</p>
+			 </div>
+			 <div class="market">
 				<%= @val.ebitda %>
-				<p class="sub-text">EBITDA </p>
-				
+				<p class="sub-text">EBITDA </p>	
 				</div>
-				</div>
-
-
-
-			  	
-
-			  	</div>
-				
 			</div>
+			 
+			<div class="container">
+			<hr class="full-line">
+
+			<div id="eps-chart">
+				<script>
+				Highcharts.chart('eps-chart', {
+
+				    title: {
+				        text: 'Estimated Earnings Per Share'
+				    },
+
+				    subtitle: {
+				        text: '<%=@val.name%>'
+				    },
+
+				    yAxis: {
+				        title: {
+				            text: 'Earnings Per Share Estimate'
+				        }
+				    },
+				    legend: {
+				        layout: 'vertical',
+				        align: 'right',
+				        verticalAlign: 'middle'
+				    },
+
+				    plotOptions: {
+				        series: {
+				            pointStart: 2017
+				        }
+				    },
+
+				    series: [{
+				        name: 'EPS',
+				        data: [<%=@val.eps_estimate_next_quarter %>, <%=@val.eps_estimate_current_year %>, <%=@val.eps_estimate_next_year %>]
+				    }, ]
+
+				});
+							
+			</script>
+			</div>
+			</div>
+		  	</div>
+			
 		</div>
 	</div>
-
-
-
-
-	<%= link_to 'Edit', edit_stock_value_path(@stock_value) %> |
-	<%= link_to 'Back', stock_values_path %>
-
 </div>
+
+
+<%= render "footer" %>
+

@@ -1,5 +1,18 @@
+<%= render "navigation_value_search" %>
+<div class="new-stock-page">
+</div>
+<div id="enter-ticker">
 <h1>Enter Ticker</h1>
 
 <%= render 'form', stock_value: @stock_value %>
+</div>
 
-<%= link_to 'Back', stock_values_path %>
+<div id="stock-man">
+<img src="/assets/stock_guy.png" class="img-responsive" alt="">
+</div>
+<div class="container">
+	<div class="home-button btn btn-lg">
+		<%= link_to 'Home', '/' %>
+	</div>
+</div>
+

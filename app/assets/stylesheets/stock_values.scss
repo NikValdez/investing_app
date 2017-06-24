@@ -35,6 +35,7 @@
 	text-align: center;
 	border: 2px solid #7cb5ec;
     border-radius: 5px;
+    margin-top: 60px;
 
 }
 #stock-price {
@@ -77,8 +78,11 @@
 	border: 2px solid #7cb5ec;
     border-radius: 5px;
     font-family: "League Gothic","Times New Roman",serif;
+    display: inline-block;
+    width: 350px;
+    margin: 55px;
+    
 
-   
 }
 
 
@@ -90,8 +94,94 @@
 
 
 .yearly_change {
-	
-	font-family: "League Gothic","Times New Roman",serif;
-
+	font-size: 55px;
+	margin-top: 20px;
+	text-align: center;
+	border: 2px solid #7cb5ec;
+    border-radius: 5px;
+    font-family: "League Gothic","Times New Roman",serif;
+    display: inline-block;
+    width: 400px;
+    margin: 30px;
 }
 
+
+#eps-chart {
+	min-width: 310px;
+	max-width: 800px;
+	height: 400px;
+	margin: 0 auto;
+	border: 2px solid #7cb5ec;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+
+.new-stock-page {
+	margin-top: 60px;
+}
+
+
+.new-stock-page {
+  position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  background-position: center;
+  background-image: image-url('nerdvestor.png');
+  padding: 70px 0;
+}
+
+#enter-ticker {
+	text-align: center;
+	h1 {
+		padding-top: 20px;
+		font-size: 60px;
+		font-weight: 900;
+		-webkit-text-fill-color: #c9c9c9;
+        -webkit-text-stroke-color: #fdcc52;
+        -webkit-text-stroke-width: 1.00px; 
+	}
+}
+
+
+input[type="submit"]{
+	color: #fdcc52;
+	background-color: #fff;
+	border-color: #fdcc52;
+	text-decoration: none;
+	font-size: 20px;
+	&:hover {
+	color: #fdcc52;
+	background-color: #fff;
+	border-color: #fdcc52;
+	text-decoration: none;
+	font-size: 25px;
+	}
+}
+
+#form-inputs {
+	padding-bottom: 5px;	
+}
+
+
+#stock-man {
+	margin: 0 auto;
+	float: right;
+}
+
+.home-button {
+	font-size: 15px;
+}
+.home-button:hover {
+	color: #fdcc52;
+	background-color: #fff;
+	border-color: #fdcc52;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.footer-stlye {
+	margin-top: 30px;
+}

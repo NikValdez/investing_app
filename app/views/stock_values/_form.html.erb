@@ -1,11 +1,13 @@
 <%= simple_form_for(@stock_value) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div id="form-inputs">
     <%= f.input :ticker, label: false, placeholder: "Enter Symbol" %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "stock's value" %>
+  <div class="form-actions btn-xl">
+    <%= f.button :submit, "Visualize Value" %>
   </div>
 <% end %>
+
+
